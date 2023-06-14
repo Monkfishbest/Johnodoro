@@ -14,7 +14,9 @@ ENV FLASK_RUN_PORT=5000
 WORKDIR /johnodoro
 
 # copies the folders to johnodoro folder in the docker container
-COPY . .
+COPY application /johnodoro/application
+COPY requirements.txt /johnodoro
+
 
 # installs Flask and Jinja2
 # --no-cahche-dir tells pip not to chache any installs 
@@ -25,6 +27,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000 
 
 # runs thease commands when we "docker run"
-CMD ["python3", "appliction/johnodoro.py"]
+CMD ["python3", "/johnodoro/application/app.py"]
 
 
